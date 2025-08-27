@@ -1,0 +1,16 @@
+version: '3.8' # Versão do Docker Compose
+
+services:
+  # Serviço do banco de dados PostgreSQL
+  postgres:
+    image: postgres:14 # Imagem oficial do PostgreSQL versão 14
+    container_name: inventario-db # Nome do container
+    restart: always # Sempre reiniciar o container se ele parar
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do container para a 5432 da sua máquina
+    environment:
+      POSTGRES_USER: admin     # Usuário do banco
+      POSTGRES_PASSWORD: admin # Senha do banco
+      POSTGRES_DB: inventario  # Nome do banco de dados que será criado
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data # Garante que os dados do banco persistam mesmo se o container for removido
