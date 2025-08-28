@@ -38,9 +38,9 @@ export class CreateProdutoDto {
   @ApiProperty({
     description: 'O material principal do produto',
     example: 'Seda',
-    required: false,
+    required: true,
   })
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   material: string;
 }

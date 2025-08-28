@@ -16,7 +16,7 @@ import { UpdateTipoDto } from './dto/update-tipo.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Tipo } from './entities/tipo.entity';
 
-@ApiTags('tipos') // Agrupa todos os endpoints sob a tag "tipos"
+@ApiTags('tipos')
 @Controller('tipos')
 export class TiposController {
   constructor(private readonly tiposService: TiposService) {}
