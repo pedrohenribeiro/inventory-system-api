@@ -1,18 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm'; // 1. Importe o getRepositoryToken
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { ProdutosService } from './produtos.service';
-import { Produto } from './entities/produto.entity';   // 2. Importe sua entidade
+import { Produto } from './entities/produto.entity';
+import { TiposService } from '../tipos/tipos.service';
 
 describe('ProdutosService', () => {
   let service: ProdutosService;
+
+  // Criamos um mock para o TiposService
+  const mockTiposService = {
+    findOne: jest.fn(),
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ProdutosService,
+        // Provider mock para o repositório de Produto
         {
           provide: getRepositoryToken(Produto),
-          useValue: {}, 
+          useValue: {},
+        },
+        // Provider mock para o TiposService
+        {
+          provide: TiposService,
+          useValue: mockTiposService,
         },
       ],
     }).compile();

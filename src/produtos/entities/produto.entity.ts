@@ -4,11 +4,13 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+import { Tipo } from '../../tipos/entities/tipo.entity';
 
 @Entity({ name: 'produtos' })
 export class Produto {
-
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;
 
@@ -18,11 +20,12 @@ export class Produto {
   @Column({ type: 'text', nullable: true })
   descricao: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  tipo: string;
-
   @Column({ type: 'varchar', length: 100, nullable: true })
   material: string;
+
+  @ManyToOne(() => Tipo, (tipo) => tipo.produtos, { eager: true })
+  @JoinColumn({ name: 'tipo_id' })
+  tipo: Tipo;
 
   @CreateDateColumn({ name: 'criado_em' })
   criadoEm: Date;

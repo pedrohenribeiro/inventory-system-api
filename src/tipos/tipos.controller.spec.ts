@@ -1,20 +1,36 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { TiposController } from './tipos.controller';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { TiposService } from './tipos.service';
+import { CreateTipoDto } from './dto/create-tipo.dto';
+import { UpdateTipoDto } from './dto/update-tipo.dto';
+import { ApiTags } from '@nestjs/swagger';
 
-describe('TiposController', () => {
-  let controller: TiposController;
+@ApiTags('tipos')
+@Controller('tipos')
+export class TiposController {
+  constructor(private readonly tiposService: TiposService) {}
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [TiposController],
-      providers: [TiposService],
-    }).compile();
+  @Post()
+  create(@Body() createTipoDto: CreateTipoDto) {
+    return this.tiposService.create(createTipoDto);
+  }
 
-    controller = module.get<TiposController>(TiposController);
-  });
+  @Get()
+  findAll() {
+    return this.tiposService.findAll();
+  }
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
-});
+  @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.tiposService.findOne(id);
+  }
+
+  @Patch(':id')
+  update(@Param('id', ParseIntPipe) id: number, @Body() updateTipoDto: UpdateTipoDto) {
+    return this.tiposService.update(id, updateTipoDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.tiposService.remove(id);
+  }
+}
