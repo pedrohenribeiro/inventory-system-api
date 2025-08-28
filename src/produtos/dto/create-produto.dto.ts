@@ -1,10 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber, IsPositive, IsNotEmpty, MinLength, IsOptional, IsInt } from 'class-validator';
+import { IsString, IsNotEmpty, MinLength, IsOptional,
+} from 'class-validator';
 
 export class CreateProdutoDto {
   @ApiProperty({
     description: 'O nome do produto',
-    example: 'Monitor Gamer Ultrawide 34"',
+    example: 'Vestido Longo de Festa',
   })
   @IsString()
   @IsNotEmpty()
@@ -13,27 +14,27 @@ export class CreateProdutoDto {
 
   @ApiProperty({
     description: 'Uma descrição detalhada do produto',
-    example: 'Monitor com resolução QHD, 144Hz de taxa de atualização e 1ms de resposta.',
+    example: 'Vestido longo de seda, ideal para casamentos e formaturas.',
     required: false,
   })
-  @IsOptional()
   @IsString()
+  @IsOptional()
   descricao: string;
 
   @ApiProperty({
-    description: 'O preço de venda do produto',
-    example: 2499.99,
+    description: 'O tipo ou categoria do produto',
+    example: 'Vestido',
   })
-  @IsNumber()
-  @IsPositive()
-  preco: number;
+  @IsString()
+  @IsNotEmpty()
+  tipo: string;
 
   @ApiProperty({
-    description: 'A quantidade de unidades do produto em estoque',
-    example: 15,
+    description: 'O material principal do produto',
+    example: 'Seda',
+    required: false,
   })
-  @IsNumber()
-  @IsPositive()
-  @IsInt()
-  quantidade_em_estoque: number;
+  @IsString()
+  @IsOptional()
+  material: string;
 }
