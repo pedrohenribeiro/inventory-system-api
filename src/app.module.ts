@@ -27,7 +27,7 @@ import { TiposModule } from './tipos/tipos.module';
     ProdutosModule,
     TiposModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

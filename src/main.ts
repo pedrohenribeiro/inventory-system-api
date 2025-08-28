@@ -10,12 +10,12 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('API de Inventário')
-    .setDescription('Documentação da API para o sistema de gerenciamento de inventário')
+    .setDescription('Documentação da API do sistema de gerenciamento de inventário')
     .setVersion('1.0')
     .addTag('produtos')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('docs', app, document);
 
   await app.listen(3000);
 }
