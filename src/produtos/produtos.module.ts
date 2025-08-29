@@ -9,6 +9,6 @@ import { TiposModule } from '../tipos/tipos.module';
   imports: [TypeOrmModule.forFeature([Produto]), TiposModule],
   controllers: [ProdutosController],
   providers: [ProdutosService],
-  
+  exports: [ProdutosService],
 })
 export class ProdutosModule {}

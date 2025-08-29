@@ -118,4 +118,4 @@ docker-compose down -v
 ```bash
 docker-compose up --build
 ```
-- serve para construir os containers!
+- serve para construir os containers!wsl --shutdown

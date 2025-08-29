@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ProdutosModule } from './produtos/produtos.module';
 import { TiposModule } from './tipos/tipos.module';
 import { VariacaoProdutoModule } from './variacao-produto/variacao-produto.module';
+import { SolicitacaoReposicaoModule } from './solicitacao-reposicao/solicitacao-reposicao.module';
 
 @Module({
   imports: [
@@ -28,6 +27,7 @@ import { VariacaoProdutoModule } from './variacao-produto/variacao-produto.modul
     ProdutosModule,
     TiposModule,
     VariacaoProdutoModule,
+    SolicitacaoReposicaoModule,
   ],
   controllers: [],
   providers: [],
