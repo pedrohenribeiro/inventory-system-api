@@ -16,7 +16,7 @@ export class VariacaoProduto {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;
 
-  @ApiProperty({ description: 'Tamanho da peça (ex: P, M, G, 42)', example: 'M' })
+  @ApiProperty({ description: 'Tamanho da peça (ex: P, M, G)', example: 'M' })
   @Column({ type: 'varchar', length: 10, nullable: true })
   tamanho: string;
   
