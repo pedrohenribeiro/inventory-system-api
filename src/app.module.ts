@@ -6,6 +6,7 @@ import { TiposModule } from './tipos/tipos.module';
 import { VariacaoProdutoModule } from './variacao-produto/variacao-produto.module';
 import { SolicitacaoReposicaoModule } from './solicitacao-reposicao/solicitacao-reposicao.module';
 import { ImagemProdutoModule } from './imagem-produto/imagem-produto.module';
+import { MovimentacaoEstoqueModule } from './movimentacao-estoque/movimentacao-estoque.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ImagemProdutoModule } from './imagem-produto/imagem-produto.module';
     VariacaoProdutoModule,
     SolicitacaoReposicaoModule,
     ImagemProdutoModule,
+    MovimentacaoEstoqueModule,
   ],
   controllers: [],
   providers: [],

@@ -6,8 +6,10 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { Tipo } from '../../tipos/entities/tipo.entity';
+import { VariacaoProduto } from '../../variacao-produto/entities/variacao-produto.entity';
 
 @Entity({ name: 'produtos' })
 export class Produto {
@@ -26,6 +28,9 @@ export class Produto {
   @ManyToOne(() => Tipo, (tipo) => tipo.produtos, { eager: true })
   @JoinColumn({ name: 'tipo_id' })
   tipo: Tipo;
+
+  @OneToMany(() => VariacaoProduto, (variacao) => variacao.produto)
+  variacoes: VariacaoProduto[];
 
   @CreateDateColumn({ name: 'criado_em' })
   criadoEm: Date;

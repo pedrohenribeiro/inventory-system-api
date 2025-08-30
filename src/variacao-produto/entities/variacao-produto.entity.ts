@@ -11,6 +11,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ImagemProduto } from '../../imagem-produto/entities/imagem-produto.entity';
+import { MovimentacaoEstoque } from '../../movimentacao-estoque/entities/movimentacao-estoque.entity';
 
 @Entity({ name: 'variacoes_produto' })
 export class VariacaoProduto {
@@ -46,7 +47,7 @@ export class VariacaoProduto {
   quantidade_ideal: number;
 
   @ApiProperty({ type: () => Produto })
-  @ManyToOne(() => Produto, { eager: true })
+  @ManyToOne(() => Produto, (produto) => produto.variacoes, { eager: true })
   @JoinColumn({ name: 'produto_id' })
   produto: Produto;
 
@@ -56,9 +57,16 @@ export class VariacaoProduto {
   })
   imagens: ImagemProduto[];
 
+  @OneToMany(
+    () => MovimentacaoEstoque,
+    (movimentacao) => movimentacao.variacao,
+  )
+  movimentacoes: MovimentacaoEstoque[];
+
   @CreateDateColumn({ name: 'criado_em' })
   criadoEm: Date;
 
   @UpdateDateColumn({ name: 'atualizado_em' })
   atualizadoEm: Date;
 }
+
