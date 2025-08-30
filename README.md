@@ -96,3 +96,32 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+## Comandos de Desenvolvimento
+
+```bash
+nest generate resource produtos
+```
+- serve para gerar uma nova tabela com entidade, controlers e tudo mais!
+
+```bash
+docker-compose down
+```
+- serve para apagar os containers!
+
+```bash
+docker-compose down -v
+```
+- serve para apagar os containers e remover os volumes de dados!
+
+```bash
+docker-compose up --build
+```
+- serve para iniciar os containers, e se tiver alguma alteração no Dockerfile ou codigo fonte ele reconstrói a imagem inventario-api
+
+```
+docker-compose up -d postgres
+```
+-serve para iniciar o container do banco de dados e o "-d" serve para deixar em segundo plano, liberando o terminal
+
