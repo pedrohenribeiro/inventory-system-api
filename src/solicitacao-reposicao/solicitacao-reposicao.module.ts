@@ -8,7 +8,7 @@ import { VariacaoProdutoModule } from '../variacao-produto/variacao-produto.modu
 @Module({
   imports: [
     TypeOrmModule.forFeature([SolicitacaoReposicao]),
-    VariacaoProdutoModule, // CORREÇÃO: Adicione esta linha
+    VariacaoProdutoModule,
   ],
   controllers: [SolicitacaoReposicaoController],
   providers: [SolicitacaoReposicaoService],

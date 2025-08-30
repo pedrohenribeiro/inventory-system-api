@@ -5,7 +5,7 @@ import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Produto } from './entities/produto.entity';
 
-@ApiTags('produtos') // Agrupa todos os endpoints sob a tag "produtos" no Swagger
+@ApiTags('produtos')
 @Controller('produtos')
 export class ProdutosController {
   constructor(private readonly produtosService: ProdutosService) {}
@@ -45,7 +45,7 @@ export class ProdutosController {
   }
 
   @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT) // Define o status de sucesso como 204 No Content
+  @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Remover um produto pelo ID' })
   @ApiResponse({ status: 204, description: 'Produto removido com sucesso.' })
   @ApiResponse({ status: 404, description: 'Produto não encontrado.' })

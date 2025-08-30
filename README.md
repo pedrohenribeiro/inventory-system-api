@@ -118,4 +118,10 @@ docker-compose down -v
 ```bash
 docker-compose up --build
 ```
-- serve para construir os containers!wsl --shutdown
+- serve para iniciar os containers, e se tiver alguma alteração no Dockerfile ou codigo fonte ele reconstrói a imagem inventario-api
+
+```
+docker-compose up -d postgres
+```
+-serve para iniciar o container do banco de dados e o "-d" serve para deixar em segundo plano, liberando o terminal
+

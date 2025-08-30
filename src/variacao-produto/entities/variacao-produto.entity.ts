@@ -6,9 +6,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ImagemProduto } from '../../imagem-produto/entities/imagem-produto.entity';
 
 @Entity({ name: 'variacoes_produto' })
 export class VariacaoProduto {
@@ -19,12 +21,15 @@ export class VariacaoProduto {
   @ApiProperty({ description: 'Tamanho da peça (ex: P, M, G)', example: 'M' })
   @Column({ type: 'varchar', length: 10, nullable: true })
   tamanho: string;
-  
+
   @ApiProperty({ description: 'Cor da peça', example: 'Azul Royal' })
   @Column({ type: 'varchar', length: 50, nullable: true })
   cor: string;
 
-  @ApiProperty({ description: 'Código de barras único para a variação (SKU)', example: 'VTL-M-AZR-001' })
+  @ApiProperty({
+    description: 'Código de barras único para a variação (SKU)',
+    example: 'VTL-M-AZR-001',
+  })
   @Column({ type: 'varchar', length: 255, unique: true })
   codigo_barras: string;
 
@@ -44,6 +49,12 @@ export class VariacaoProduto {
   @ManyToOne(() => Produto, { eager: true })
   @JoinColumn({ name: 'produto_id' })
   produto: Produto;
+
+  @ApiProperty({ type: () => [ImagemProduto], required: false })
+  @OneToMany(() => ImagemProduto, (imagem) => imagem.variacao, {
+    cascade: true,
+  })
+  imagens: ImagemProduto[];
 
   @CreateDateColumn({ name: 'criado_em' })
   criadoEm: Date;

@@ -29,7 +29,7 @@ export class SolicitacaoReposicao {
   observacoes: string;
 
   @ApiProperty({ type: () => VariacaoProduto })
-  @ManyToOne(() => VariacaoProduto, { eager: true }) // eager: true carrega a variação automaticamente
+  @ManyToOne(() => VariacaoProduto, { eager: true })
   @JoinColumn({ name: 'variacao_id' })
   variacao: VariacaoProduto;
 

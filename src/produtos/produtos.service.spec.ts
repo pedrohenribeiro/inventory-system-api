@@ -7,7 +7,6 @@ import { TiposService } from '../tipos/tipos.service';
 describe('ProdutosService', () => {
   let service: ProdutosService;
 
-  // Criamos um mock para o TiposService
   const mockTiposService = {
     findOne: jest.fn(),
   };
@@ -16,12 +15,10 @@ describe('ProdutosService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ProdutosService,
-        // Provider mock para o repositório de Produto
         {
           provide: getRepositoryToken(Produto),
           useValue: {},
         },
-        // Provider mock para o TiposService
         {
           provide: TiposService,
           useValue: mockTiposService,
