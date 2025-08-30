@@ -9,7 +9,6 @@ import {
 import { VariacaoProduto } from '../../variacao-produto/entities/variacao-produto.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
-// Enum para os tipos de transação, garantindo consistência
 export enum TipoTransacao {
   PRODUCAO_FINALIZADA = 'producao_finalizada',
   VENDA = 'venda',
@@ -31,7 +30,7 @@ export class MovimentacaoEstoque {
   tipo_transacao: TipoTransacao;
 
   @Column({ type: 'integer', nullable: false })
-  alteracao_quantidade: number; // Positivo para entradas, negativo para saídas
+  alteracao_quantidade: number;
 
   @Column({ type: 'text', nullable: true })
   observacoes: string;

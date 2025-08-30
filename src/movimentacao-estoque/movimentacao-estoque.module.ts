@@ -8,10 +8,10 @@ import { VariacaoProdutoModule } from '../variacao-produto/variacao-produto.modu
 @Module({
   imports: [
     TypeOrmModule.forFeature([MovimentacaoEstoque]),
-    VariacaoProdutoModule, // Importa para ter acesso ao VariacaoProdutoService
+    VariacaoProdutoModule,
   ],
   controllers: [MovimentacaoEstoqueController],
   providers: [MovimentacaoEstoqueService],
-  exports: [MovimentacaoEstoqueService], // Exporta o serviço para ser usado por outros módulos
+  exports: [MovimentacaoEstoqueService],
 })
 export class MovimentacaoEstoqueModule {}

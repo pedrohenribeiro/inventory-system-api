@@ -4,11 +4,13 @@ import { SolicitacaoReposicaoController } from './solicitacao-reposicao.controll
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SolicitacaoReposicao } from './entities/solicitacao-reposicao.entity';
 import { VariacaoProdutoModule } from '../variacao-produto/variacao-produto.module';
+import { MovimentacaoEstoqueModule } from '../movimentacao-estoque/movimentacao-estoque.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([SolicitacaoReposicao]),
     VariacaoProdutoModule,
+    MovimentacaoEstoqueModule,
   ],
   controllers: [SolicitacaoReposicaoController],
   providers: [SolicitacaoReposicaoService],
