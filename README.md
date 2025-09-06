@@ -125,3 +125,6 @@ docker-compose up -d postgres
 ```
 -serve para iniciar o container do banco de dados e o "-d" serve para deixar em segundo plano, liberando o terminal
 
+```
+wsl --shutdown
+```
